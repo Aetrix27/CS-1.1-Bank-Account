@@ -1,8 +1,11 @@
+from random import randint
+
 class bankAccount:
+
     def __init__(self):
         self.full_name = ""
-        self.account_number= 0
-        self.routing_number =0 
+        self.account_number = randint(00000000, 99999999)
+        self.routing_number = randint(00000000, 99999999)
         self.balance = 0
 
     def deposit(self, amount):
@@ -25,6 +28,11 @@ class bankAccount:
         monthly_interest = self.balance *  0.0008
         self.balance *= monthly_interest
         return self.balance
+    def print_receipt(self):
+        return f"""{self.full_name} \n
+                Account No: {self.account_number} \n 
+                Routing No: {self.routing_number}\n 
+                Balance: ${self.balance}"""
 
 
 
@@ -34,3 +42,4 @@ account1.add_interest()
 print(account1.get_balance())
 print(account1.withdraw(10))
 print(account1.get_balance())
+print(account1.print_receipt())
