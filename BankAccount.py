@@ -4,7 +4,7 @@ accessingAccount = True
 
 class bankAccount:
     def __init__(self):
-        self.full_name = ""
+        self.full_name = "David Guerrero"
         randomNum = randint(00000000, 99999999)
         counter = 0
         randIterator = str(randomNum)
@@ -23,7 +23,7 @@ class bankAccount:
                 rand2 = rand2.replace(num, "*")
 
         self.routing_number = rand2
-        self.balance = 0.0
+        self.balance = 0.00
 
     def deposit(self, amount):
         self.balance += amount
@@ -45,7 +45,7 @@ class bankAccount:
 
     def add_interest(self):
         monthly_interest = self.balance *  0.0008
-        self.balance *= monthly_interest
+        self.balance = monthly_interest
         return self.balance
 
     def print_receipt(self):
