@@ -27,6 +27,7 @@ class bankAccount:
 
     def deposit(self, amount):
         self.balance += amount
+        round(amount,2)
         return f"Amount Deposited: ${amount}"
     
     def withdraw(self, amount):
@@ -38,21 +39,25 @@ class bankAccount:
             return "Insufficent Funds!"
         else:
             self.balance -= amount
+            round(amount,2)
             return f"Amount Withdrawn: ${amount}"
   
     def get_balance(self):
-        return f"Hello! Your current balance is: {self.balance}"
+        rounded = round(self.balance,2)
+        return f"Hello! Your current balance is: {rounded}"
 
     def add_interest(self):
         monthly_interest = self.balance *  0.0008
-        self.balance = monthly_interest
+        self.balance -= monthly_interest
+        round(self.balance,2)
         return self.balance
 
     def print_receipt(self):
-        return f"""{self.full_name} \n
+        rounded = round(self.balance,2)
+        return f"""\n{self.full_name} \n
                 Account No: {self.account_number} \n 
                 Routing No: {self.routing_number}\n 
-                Balance: ${self.balance}"""
+                Balance: ${rounded}"""
 
 account1 = bankAccount()
 account2 = bankAccount()
@@ -76,12 +81,12 @@ while accessingAccount == True:
 
     if(selection == 1):
         amount = float(input("How much? \n"))
-        answer = account1.deposit(round(amount,2))
+        answer = account1.deposit(amount)
         print(f"Amount deposited: ${answer}")
 
     elif(selection == 2):
         amount = float(input("How much? \n"))
-        answer = account1.withdraw(round(amount,2))
+        answer = account1.withdraw(amount)
         print(f"Amount withdrawn: ${answer}")
     elif(selection == 3):
         print(account1.get_balance())
