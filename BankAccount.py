@@ -3,7 +3,6 @@ from random import randint
 accessingAccount = True
 
 class bankAccount:
-
     def __init__(self):
         self.full_name = ""
         randomNum = randint(00000000, 99999999)
@@ -23,7 +22,7 @@ class bankAccount:
             if (counter2 < 5):
                 rand2 = rand2.replace(num, "*")
         self.routing_number = rand2
-        self.balance = 0
+        self.balance = 0.00
 
     def deposit(self, amount):
         self.balance += amount
@@ -32,6 +31,9 @@ class bankAccount:
     def withdraw(self, amount):
         calc_balance = self.balance - amount
         if calc_balance < 0:
+            if(calc_balance >= 10.00):
+                self.balance -= 10.00
+                print("You have been charged $10")
             return "Insufficent Funds!"
         else:
             self.balance -= amount
@@ -52,6 +54,7 @@ class bankAccount:
                 Balance: ${self.balance}"""
 
 account1 = bankAccount()
+account2 = bankAccount()
 
 while accessingAccount == True:
     selection = int(input("""Please select from the options below by typing the number: \n
@@ -63,11 +66,14 @@ while accessingAccount == True:
         6. Exit \n"""))
 
     if(selection == 1):
-        amount = int(input("How much? \n"))
-        print(account1.deposit(amount))
+        amount = float(input("How much? \n"))
+        answer = account1.deposit(round(amount,2))
+        print(f"Amount deposited: ${answer}")
+
     elif(selection == 2):
-        amount = int(input("How much? \n"))
-        print(account1.withdraw(amount))
+        amount = float(input("How much? \n"))
+        answer = account1.withdraw(round(amount,2))
+        print(f"Amount withdrawn: ${answer}")
     elif(selection == 3):
         print(account1.get_balance())
     elif(selection == 4):
