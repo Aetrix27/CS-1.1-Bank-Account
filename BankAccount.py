@@ -3,24 +3,16 @@ from random import randint
 accessingAccount = True
 
 class bankAccount:
-    def __init__(self):
-        self.full_name = "David Guerrero"
-        randomNum = randint(00000000, 99999999)
-        counter = 0
-        randIterator = str(randomNum)
-        for num in randIterator:
-            counter += 1
-            if (counter < 5):
-                randIterator = randIterator.replace(num, "*")
+    def __init__(self, full_name):
+        self.full_name = ""
+        randomNum = randint(10000000, 99999999)
+        rand1 = str(randomNum)
+        rand1 = "****"+rand1[4:]
              
-        self.account_number = randIterator
-        randomNum2 = randint(00000000, 99999999)
-        counter2 = 0
+        self.account_number = rand1
+        randomNum2 = randint(10000000, 99999999)
         rand2 = str(randomNum2)
-        for num in rand2:
-            counter2 += 1
-            if (counter2 < 5):
-                rand2 = rand2.replace(num, "*")
+        rand2 = "****"+rand2[4:]
 
         self.routing_number = rand2
         self.balance = 0.00
@@ -59,8 +51,8 @@ class bankAccount:
                 Routing No: {self.routing_number}\n 
                 Balance: ${rounded}"""
 
-account1 = bankAccount()
-account2 = bankAccount()
+account1 = bankAccount("David Guerrero")
+account2 = bankAccount("David Guerrero")
 
 print("Below are the 3 function calls for testing")
 print("Deposited $13")
